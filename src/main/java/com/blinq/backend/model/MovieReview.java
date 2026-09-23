@@ -6,22 +6,24 @@ import java.time.LocalDateTime;
 
 @Data
 @Entity
-@Table(name = "community_posts")
-public class CommunityPost {
+@Table(name = "movie_reviews")
+public class MovieReview {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
+    private Long tmdbMovieId;
+
+    @Column(nullable = false)
     private String username;
 
     @Column(nullable = false)
-    private String title;
+    private int rating; // 1 to 5 stars
 
-    private int upvotes = 0;
-
-    private int comments = 0;
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String reviewText;
 
     private LocalDateTime createdAt = LocalDateTime.now();
 }
